@@ -17,23 +17,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
-	<!-- 	jquery -->
-	<script src="content/js/jquery-1.9.1.min.js"></script>
 	
-	<!-- 	bootstrap -->
+	<!-- requireJS -->
+    <script type="text/javascript" src="content/js/requirejs/require.js"></script>
+    <script type="text/javascript" src="content/js/modules/base/config.js"></script>
+    
+	<!-- bootstrap -->
 	<link rel="stylesheet" type="text/css" href="content/css/bootstrap/css/bootstrap.min.css"/>
-	<script src="content/css/bootstrap/js/bootstrap.min.js"></script>
 	
-	<!-- 	ace admin -->
-	<script src="content/ace.admin/assets/js/ace-extra.min.js"></script>
-	<script src="content/ace.admin/assets/js/ace.min.js"></script>
+	<!-- ace admin -->
 	<link rel="stylesheet" type="text/css" href="content/ace.admin/assets/css/ace.min.css"/>
 	<link rel="stylesheet" type="text/css" href="content/ace.admin/assets/css/ace-skins.min.css"/>
 	<link rel="stylesheet" type="text/css" href="content/ace.admin/assets/css/font-awesome.min.css"/>
 	
-	<!-- 	custom css -->
+	<!-- plugins css -->
+	<link rel="stylesheet" type="text/css" href="content/js/jquery/plugins/artDialog/css/ui-dialog.css"/>
+	<link rel="stylesheet" type="text/css" href="content/js/jquery/plugins/datatables/dataTables.css"/>
+	<link rel="stylesheet" type="text/css" href="content/js/jquery/plugins/tipsy/stylesheets/tipsy.css"/>
+	
+	<!-- custom css -->
 	<link rel="stylesheet" type="text/css" href="content/css/mystyle.css"/>
 	<link rel="stylesheet" type="text/css" href="content/css/commonstyle.css"/>
+	
+	
 
 
 	<style>	
@@ -47,9 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 
 	<script type="text/javascript">
-		$(function(){
-			
+		require(["base"]);	
+	
+		require(["systools", "mockdata"],function(tool, mock){
+			window.tool = tool;
+			window.mock = mock;
 		})
+	
+	
+/* 		$(function(){
+			$.get("/taccisum/Hello/index1", function(r){
+				alert(r);
+			})
+		}) */
+		
 	</script>
 	
   </head>
@@ -170,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--  nav list  -->
                 <ul class="nav nav-list" id="nav-list">
 					<!-- menus here -->
-					<li><a href="/taccisum/Tac/index"><i class="icon-home"></i><span class="menu-text"> 首页 </span><b class="arrow"></b></a></li>
+					<li><a href="/taccisum/Hello/index"><i class="icon-home"></i><span class="menu-text"> 首页 </span><b class="arrow"></b></a></li>
                 </ul>
                 <div class="sidebar-collapse" id="sidebar-collapse">
                     <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
