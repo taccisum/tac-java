@@ -53,13 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 
 	<script type="text/javascript">
-		require(["base"]);	
-	
-		require(["systools", "mockdata"],function(tool, mock){
-			window.tool = tool;
-			window.mock = mock;
-		})
-	
+		require(["base"], function(){
+				
+			if(DEBUG){
+				require(["mockdata"], function(mock){
+					window.mock = mock;
+				})
+			}
+		
+			require(["systools"],function(tool){
+				window.tool = tool;
+			})
+		
+		});		
+		
 	
 /* 		$(function(){
 			$.get("/taccisum/Hello/index1", function(r){
